@@ -15,7 +15,7 @@
       max-width: 1000px;
       padding: 20px;
     }
-
+      
     .logo {
       text-align: center;
       margin-top: 30px;
