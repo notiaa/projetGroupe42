@@ -38,8 +38,6 @@
                 }
             }
             return $ans;
-            // $coef = ($height - 100)/$weight;
-            // return 10 / ($coef * 1);    
         }
 
         public function getComposant(){
