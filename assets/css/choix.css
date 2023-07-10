@@ -1,0 +1,33 @@
+.content{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.boite{
+    background-color: aqua;
+    height: 200px;
+    width: 300px;
+    margin-top: 200px;
+    border-radius: 10px;
+    text-align:center;
+    box-shadow: 10px 10px 10px rgba(0,0,0,0.2);
+
+}
+a{
+    text-decoration:none;
+    color:black;
+    font-size:30px;
+    font-family: sans-serif;
+}
+h4{
+    padding: 0;
+}
+.info{
+    text-align: center;
+    padding-left: 5px;
+    font-size: 12px;
+    font-family: sans-serif;
+   
+    
+}
