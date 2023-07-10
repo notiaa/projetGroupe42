@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
-    <link rel="stylesheet" href=<?php echo base_url().'/assets/accueil.css'?>>
+    
+    <link rel="stylesheet" href=<?php echo base_url().'/assets/css/accueil.css'?>>
     <title>Navbar</title>
 </head>
 <div class="sidebar">
@@ -48,6 +49,6 @@
         <div class="social-icons">
             <span class="ti-bell"></span>
             <span class="ti-comment"></span>
-            <span><img src=<?php echo base_url().'assets/oueil.png'?> alt="no img" style="height: 38px;width: 38px;background-size: cover;background-repeat: no-repeat;border-radius: 50%;"></span>
+            <span><img src=<?php echo base_url().'assets/img/oueil.png'?> alt="no img" style="height: 38px;width: 38px;background-size: cover;background-repeat: no-repeat;border-radius: 50%;"></span>
         </div>
     </header>

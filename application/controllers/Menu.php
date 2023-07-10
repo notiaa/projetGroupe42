@@ -14,6 +14,7 @@ class Menu extends CI_Controller {
     }
     public function commencer(){
         $this->load->view('header');
+        $this->load->view('completion');
         $this->load->view('footer');
     }
 	
