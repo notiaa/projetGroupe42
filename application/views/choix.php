@@ -1,24 +1,30 @@
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href=<?php echo base_url().'assets/css/choix.css' ?> >
-    <title>Document</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Responsive Product Design</title>
+	<link rel="stylesheet" type="text/css" href=<?php echo base_url().'/assets/css/choix.css'?>>
 </head>
 <body>
-    <div class="content">
-    <div class="boite">
-            <a href="<?php echo site_url('Regime/') ?>"><h4>Basic</h4></a>
-            <div class="info">si vous n'aimez pas trop courir,ou que vous n'avez pas vraiemnt de cardio</div>
-        </div>
-        <div class="boite">
-            <a href="<?php echo site_url('Regime/') ?>"><h4>Intermediaire</h4></a>
-            <div class="info">si vous n'aimez pas trop courir,ou que vous n'avez pas vraiemnt de cardio</div>
-        </div>
-        <div class="boite">
-            <a href="<?php echo site_url('Regime/') ?>"><h4>Intensive</h4></a>
-            <div class="info">si vous n'aimez pas trop courir,ou que vous n'avez pas vraiemnt de cardio</div>
-        </div>
-    </div>
+<main>
+	<section class="products">
+		<div class="all-products">
+            <?php for($i=0;$i<count($suggestion);$i++) { ?>
+                <div class="product">
+				<img src="<?php echo base_url().'assets/img/diet.jpeg' ?>">
+				<div class="product-info">
+					<h4 class="product-title">
+						suggestion no. <?php echo $i+1 ?>
+					</h4>
+					<p class="product-price"><?php echo $suggestion[$i]['prix'] ?> Ar</p>
+					<p class="duration"><?php echo $suggestion[$i]['duree'] ?> j</p>
+					<a class="product-btn" href="<?php echo site_url('Regime/') ?>?id=<?php  echo $suggestion[$i]['idRegime']; ?>&&duree=<?php  echo $suggestion[$i]['duree']; ?>"><h4>Payer pour ce regime	</h4></a>
+				</div>
+			</div>
+            <?php }?>
+		</div>
+	</section>
+</main>
 </body>
 </html>

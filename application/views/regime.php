@@ -5,68 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="<?php echo base_url().'/assets/css/accueil.css'?>">
     <style>
-       .content{
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-}
+        .dash-cards {
+            display: flex;
+            flex-wrap: wrap;
+        }
 
-.boite{
-    background-color: aqua;
-    height: 200px;
-    width: 300px;
-    margin-top: 200px;
-    border-radius: 10px;
-    text-align:center;
-    box-shadow: 10px 10px 10px rgba(0,0,0,0.2);
+        .card-single {
+            width: 30%;
+            margin: 10px;
+            border: 5px solid #669980;
+        }
 
-}
-a{
-    text-decoration:none;
-    color:black;
-    font-size:30px;
-    font-family: sans-serif;
-}
-h4{
-    padding: 0;
-}
-.info{
-    text-align: center;
-    padding-left: 5px;
-    font-size: 12px;
-    font-family: sans-serif;
-   
-    
-}
-img{
-    width: 300px;
-    height: 200px;
-}
+        .card-body {
+            width: 100%;
+            height: 200px;
+        }
 
+        .card-body img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
+        .card-footer {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .btn-export {
+            background-color: #666699;
+            color: white;
+            font-family: sans-serif;
+            margin-left: 1100px;
+            margin-top: 200px;
+        }
     </style>
+    <title>Document</title>
 </head>
 <body>
-<div class="content">
-    <div class="boite">
-            <img src="<?php echo base_url().'assets/img/icon.png'?>" alt="">
-            
+    <main>
+        <div class="dash-cards">
+            <?php for($i = 0; $i < count($objet); $i++) { ?>
+                <div class="card-single">
+                    <div class="card-body">
+                        <img src="<?php echo base_url().'assets/img/'.$objet[$i]['image']; ?>" alt="">
+                    </div>
+                    <div class="card-footer">
+                        <p><?php echo $objet[$i]['description']; ?></p>
+                    </div>
+                </div>
+            <?php } ?>
+            <p>Duree:<?php echo $objet[0]['duree']; ?>/jours</p>
+            <a class="btn-export" href="<?php echo site_url('Regime/pdf'); ?>?duree=<?php echo $objet[0]['duree']; ?>&&id=<?php echo $objet[0]['idRegime']; ?>">Exporter</a>
         </div>
-        <div class="info">si vous n'aimez pas trop courir,ou que vous n'avez pas vraiemnt de cardio</div>
-        <div class="boite">
-        <img src="<?php echo base_url().'assets/img/icon.png'?>" alt="">
-            
-        </div>
-        <div class="info">si vous n'aimez pas trop courir,ou que vous n'avez pas vraiemnt de cardio</div>
-        <div class="boite">
-        <img src="<?php echo base_url().'assets/img/icon.png'?>" alt="">
-           
-        </div>
-        <div class="info">si vous n'aimez pas trop courir,ou que vous n'avez pas vraiemnt de cardio</div>
-    </div>
-    <a class="btn " href="<?php echo site_url('Regime/pdf');?>" style="background-color:#666699;color:white;font-family:sans-serif;margin-left:1100px;margin-top:200px">Exporter</a>
-    
+    </main>   
 </body>
 </html>
+
+
+

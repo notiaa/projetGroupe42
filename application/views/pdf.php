@@ -18,7 +18,6 @@
       
     .logo {
       text-align: center;
-      margin-top: 30px;
     }
 
     .logo img {
@@ -29,19 +28,17 @@
 
     .title {
       text-align: center;
-      margin-top: 50px;
+      
       
 
     }
 
     .subtitle {
       text-align: center;
-      margin-top: 20px;
     }
 
     .content {
       text-align: center;
-      margin-top: 100px;
       
     }
 
@@ -51,7 +48,6 @@
 
     .footer {
       text-align: center;
-      margin-top: 100px;
       font-size: 14px;
       color: #777;
     }
@@ -67,15 +63,23 @@
         <img src="../assets/img/icon.png" alt="Logo" class="img-fluid">
       </div>
       <div class="title">
-        <h1>ANJA</h1>
+        <h1><?php echo $olona[0]['nom']?></h1>
       </div>
       <div class="subtitle">
         <p>Informations supplémentaires</p>
-      </div>
+    
+      <?php for($i = 0; $i < count($objet); $i++) { ?>
       <div class="content">
-        <img src="../assets/img/icon.png" alt="" class="img-fluid">
-        <div>Description ou autres informations</div>
-      </div>
+                    <div class="card-body">
+                        <img src="<?php echo base_url().'assets/img/'.$objet[$i]['image']; ?>" alt="">
+                    </div>
+                    <div class="card-footer">
+                        <p><?php echo $objet[$i]['description']; ?></p>
+                    </div>
+                </div>
+            <?php } ?>
+            <br> 
+            <p>Duree:<?php echo $objet[0]['duree']; ?>/jours</p>
     </div>
     <hr style="color: black;">
     <footer class="footer">
@@ -83,6 +87,10 @@
     </footer>
   </div>
 </div> 
+<br>
+<br>
+<br>
+<br>
 <button class="download" style="background-color:">Download PDF</button>
 
 

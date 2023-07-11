@@ -16,4 +16,11 @@ class Login_model extends CI_Model {
         // $this->session->set_userdata('nom', $nom);
         // $this->session->set_userdata('mdp', $mdp);
     }
+    public function olona($id){
+        $sql = "SELECT * FROM user WHERE idUser=".$id."";
+      
+        $rows = $this->db->query($sql);
+        $data = $rows->result_array();
+        return $data;
+    }
 }

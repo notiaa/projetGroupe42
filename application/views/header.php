@@ -31,20 +31,26 @@
                 </a>
             </li>
             <li>
-                <a href="<?php echo site_url('Menu/sport')?>">
+                <a href="<?php echo site_url('Menu/sport1')?>">
                     <span class="ti-book"></span>
                     <span>Ajout Sport</span>
                 </a>
             </li>
             <li>
-                <a href="<?php echo site_url('Menu/plat')?>">
+                <a href="<?php echo site_url('Menu/plat1')?>">
                     <span class="ti-briefcase"></span>
-                    <span>Ajout Plat</span>
+                    <span>AjoutPlat</span>
+                </a>
+            </li>
+            <li>
+                <a href="<?php echo site_url('Menu/niveau')?>">
+                    <span class="ti-briefcase"></span>
+                    <span>AjoutNiveau</span>
                 </a>
             </li>
         </ul>
     </div>
-    <div style="background-color:black;width:230.3px;height:50px;border-radius:10px;margin-top:500px;padding-top:10px;padding-left:20px;margin-left:10px;box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);">
+    <div style="background-color:black;width:230.3px;height:50px;border-radius:10px;margin-top:300px;padding-top:10px;padding-left:20px;margin-left:10px;box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);">
         <a href=<?php echo site_url('Menu/commencer')?>>
             <span class="ti-time"></span>
             <span>Commencer</span>
@@ -61,6 +67,6 @@
         <div class="social-icons">
             <span class="ti-bell"></span>
             <span class="ti-comment"></span>
-            <span><img src=<?php echo base_url().'assets/img/oueil.png'?> alt="no img" style="height: 38px;width: 38px;background-size: cover;background-repeat: no-repeat;border-radius: 50%;"></span>
+            <span><img src=<?php echo base_url().'/assets/img/oueil.png'?> alt="no img" style="height: 38px;width: 38px;background-size: cover;background-repeat: no-repeat;border-radius: 50%;"></span>
         </div>
     </header>

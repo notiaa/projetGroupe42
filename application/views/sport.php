@@ -13,30 +13,30 @@
 </head>
 <body>
     <main>
-    <form method="GET">
+    <form method="GET" action="<?php echo base_url('Menu/sport')?>">
     
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label">Nom Sport</label>
         <div class="col-sm-6">
-            <input type="text" class="form-control" name="nom" value="" />
+            <input type="text" class="form-control" name="nom" value="" required/>
         </div>
     </div>
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label">Description</label>
         <div class="col-sm-6">
-        <input type="text" class="form-control" name="description" value="" />
+        <input type="text" class="form-control" name="description" value="" required/>
         </div>
     </div>
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label">Unite</label>
         <div class="col-sm-6">
-        <input type="text" class="form-control" name="unite" value="" />
+        <input type="text" class="form-control" name="unite" value="" required/>
         </div>
     </div>
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label">Photo Sport</label>
         <div class="col-sm-6">
-            <input type="file" class="form-control" name="photo" value="" />
+            <input type="file" class="form-control" name="photo" value="" required/>
         </div>
     </div>
             <button type="submit" class="btn btn-primary">Envoyer</button>
