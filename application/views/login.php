@@ -10,7 +10,7 @@
 <body>
     <div class="container" id="container">
         <div class="form-container sign-up-container">
-            <form action="<?php echo site_url('Welcome/sign_up') ?>" method='post'>
+            <form action="<?php echo site_url('Welcome/sign_up') ?>" method='post' enctype="multipart/form-data">
                 <h1>Sign up</h1>
                 <div class="social-container">
                     <i class="fab fa-facebook-f"></i>
@@ -55,5 +55,5 @@
         </div>
     </div>
     <script src="./javascript/script.js" charset="utf-8"></script>
-</body> 
+</body>
 </html>

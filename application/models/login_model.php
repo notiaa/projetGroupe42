@@ -11,9 +11,9 @@ class Login_model extends CI_Model {
         if(count($data) == 0){
             return 0;
 		}
+        $this->session->set_userdata('idUser', $data[0]['idUser']);
         return $data[0]['idUser'];
         // $this->db->query($sql);
-        // $this->session->set_userdata('nom', $nom);
-        // $this->session->set_userdata('mdp', $mdp);
+        //$this->session->set_userdata('mdp', $mdp);
     }
 }

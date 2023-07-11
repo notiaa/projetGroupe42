@@ -4,7 +4,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Welcome extends CI_Controller {
 	public function index()
 	{
-		session_destroy();
 		$this->load->view('login');
   	}
 
@@ -13,10 +12,15 @@ class Welcome extends CI_Controller {
 		$nom = $_POST['email'];
 		$pwd = $_POST['pwd'];
 		$idUser = $this->login_model->check($nom,$pwd);
-		if ($idUser == 1) {
-			$_SESSION['idUser'] = $idUser;
-			redirect('Menu/');	
+		if ($idUser != 0) {
+			redirect('Menu/');
 		}
 		redirect('Welcome/');
+	}
+
+	public function sign_up(){
+		$this->load->model('user_model');
+		$this->user_model->insert_user();
+		redirect('Welcome');
 	}
 }

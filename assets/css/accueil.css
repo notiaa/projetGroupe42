@@ -64,35 +64,33 @@ header{
     padding: 0rem 1rem;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     border-bottom: 1px solid #ccc;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
-.search-wrapper{
-    display: flex;
 
-}
 .search-wrapper input{
     border: 0;
     outline: 0;
-    width: 1000px;
-    padding: 1rem;
+    width: 800px;
     height: 38px;
 }
 .social-icons{
+    width: 250px;
     display: flex;
     align-items: center;
+    justify-content: space-evenly;
 }
-.social-icons span,
-.social-icons div{
-    margin-left: 1.2rem;
+.social-icons .image{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
+
 .social-icons div{
     height: 38px;
     width: 38px;
-    background-size: cover;
-    background-repeat: no-repeat;
     border-radius: 50%;
 }
 main{
