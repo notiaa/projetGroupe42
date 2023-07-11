@@ -281,6 +281,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `email` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
   `isAdmin` tinyint(4) NOT NULL DEFAULT '0',
+  `isGold` tinyint(2) NOT NULL DEFAULT '0',
   `img` varchar(150) NOT NULL,
   PRIMARY KEY (`idUser`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
