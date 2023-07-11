@@ -74,6 +74,7 @@
                         <img src="<?php echo base_url().'assets/img/'.$objet[$i]['image']; ?>" alt="">
                     </div>
                     <div class="card-footer">
+                    <p><?php echo $objet[$i]['nom']; ?></p>
                         <p><?php echo $objet[$i]['description']; ?></p>
                     </div>
                 </div>

@@ -8,9 +8,12 @@ class Login_model extends CI_Model {
         $sql = sprintf($sql, $this->db->escape($nom), $this->db->escape($pwd));
         $rows = $this->db->query($sql);
         $data = $rows->result_array();
+       
         if(count($data) == 0){
             return 0;
 		}
+        $_SESSION['idUser'] = $data[0]['idUser'];
+        $_SESSION['isAdmin'] = $data[0]['isAdmin'];
         return $data[0]['idUser'];
         // $this->db->query($sql);
         // $this->session->set_userdata('nom', $nom);

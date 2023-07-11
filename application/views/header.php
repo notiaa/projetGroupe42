@@ -12,7 +12,7 @@
     <div class="sidebar-header">
         <h3 class="brand">
             <span class="ti-unlink"></span>
-            <span>easywire</span>
+            <span>easyDiet</span>
         </h3>
         <span class="ti-menu-alt"></span>
     </div>
@@ -31,6 +31,17 @@
                 </a>
             </li>
             <li>
+                <a href="<?php echo site_url('Regime/imcForm')?>">
+                    <span class="ti-heart"></span>
+                    <span>Mon IMC</span>
+                </a>
+            </li>
+            <?php
+             if ($_SESSION['isAdmin']==1) 
+            { 
+            ?>
+            
+            <li>
                 <a href="<?php echo site_url('Menu/sport1')?>">
                     <span class="ti-book"></span>
                     <span>Ajout Sport</span>
@@ -48,6 +59,19 @@
                     <span>AjoutNiveau</span>
                 </a>
             </li>
+            <li>
+                <a href="<?php echo site_url('Menu/code')?>">
+                    <span class="ti-money"></span>
+                    <span>Ajout Code</span>
+                </a>
+            </li>
+            <li>
+                <a href="<?php echo site_url('Menu/graphe')?>">
+                    <span class="ti-money"></span>
+                    <span>Chart graphique</span>
+                </a>
+            </li>
+       <?php } ?>
         </ul>
     </div>
     <div style="background-color:black;width:230.3px;height:50px;border-radius:10px;margin-top:300px;padding-top:10px;padding-left:20px;margin-left:10px;box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);">
@@ -59,14 +83,15 @@
 </div>
 <div class="main-content">
     <header>
-        <div class="search-wrapper">
-            <span class="ti-search">
-                <input type="search" placeholder="Rechercher">
-            </span>
-        </div>
+
         <div class="social-icons">
-            <span class="ti-bell"></span>
-            <span class="ti-comment"></span>
+        <?php
+        if ($_SESSION['isAdmin']==1) 
+            { 
+            ?>
+            <a href=<?php echo site_url('Transaction/listeAttente')?>><span class="ti-bell"></span></a>
+            <a href=""><span class="ti-comment"></span></a>
+            <?php } ?>
             <span><img src=<?php echo base_url().'/assets/img/oueil.png'?> alt="no img" style="height: 38px;width: 38px;background-size: cover;background-repeat: no-repeat;border-radius: 50%;"></span>
         </div>
     </header>

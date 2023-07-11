@@ -10,7 +10,7 @@
 <body>
     <div class="container" id="container">
         <div class="form-container sign-up-container">
-            <form action="<?php echo site_url('Welcome/sign_up') ?>" method='post'>
+            <form action="<?php echo site_url('Welcome/sign_up') ?>" method='post' enctype="multipart/form-data">
                 <h1>Sign up</h1>
                 <div class="social-container">
                     <i class="fab fa-facebook-f"></i>
@@ -19,7 +19,7 @@
                 </div>
                 <input type="text" name="nom" placeholder="Nom">
                 <input type="email" name="email" placeholder="E-mail">
-                <input type="password" name="pwd" placeholder="Mot de passe">
+                <input type="password" name="pwd" placeholder="Mot de passe">   
                 <input type="file" name="user_pic" id="upload">
                 <button>Sign up</button>
             </form>

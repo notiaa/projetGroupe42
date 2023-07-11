@@ -16,6 +16,7 @@
             width: 30%;
             margin: 10px;
             border: 5px solid #669980;
+            overflow: visible;
         }
 
         .card-body {
@@ -32,6 +33,7 @@
         .card-footer {
             text-align: center;
             margin-top: 10px;
+            overflow: hidden;
         }
 
         .btn-export {
@@ -53,6 +55,7 @@
                         <img src="<?php echo base_url().'assets/img/'.$objet[$i]['image']; ?>" alt="">
                     </div>
                     <div class="card-footer">
+                    <p><?php echo $objet[$i]['nom']; ?></p>
                         <p><?php echo $objet[$i]['description']; ?></p>
                     </div>
                 </div>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 10, 2023 at 03:11 PM
+-- Generation Time: Jul 11, 2023 at 02:31 AM
 -- Server version: 5.6.11-log
 -- PHP Version: 5.3.25
 
@@ -25,6 +25,63 @@ USE `projet42h`;
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `account`
+--
+
+CREATE TABLE IF NOT EXISTS `account` (
+  `idAccount` int(11) NOT NULL AUTO_INCREMENT,
+  `idUser` int(11) NOT NULL,
+  `montant` decimal(10,0) DEFAULT NULL,
+  PRIMARY KEY (`idAccount`),
+  KEY `user_account_idfk` (`idUser`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `account`
+--
+
+--INSERT INTO `account` (`idAccount`, `idUser`, `montant`) VALUES
+(1, 1, '815000');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `achat`
+--
+
+CREATE TABLE IF NOT EXISTS `achat` (
+  `idUser` int(11) DEFAULT NULL,
+  `idRegime` int(11) DEFAULT NULL,
+  `prix` decimal(10,0) DEFAULT NULL,
+  `dateAchat` date DEFAULT NULL,
+  KEY `user_achat_fk` (`idUser`),
+  KEY `regime_achat_fk` (`idRegime`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `code_credit`
+--
+
+CREATE TABLE IF NOT EXISTS `code_credit` (
+  `numeric_value` int(11) NOT NULL AUTO_INCREMENT,
+  `key_char` varchar(3) DEFAULT NULL,
+  `used` tinyint(2) DEFAULT '0',
+  `value` decimal(10,0) DEFAULT NULL,
+  UNIQUE KEY `numeric_value` (`numeric_value`,`key_char`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `code_credit`
+--
+
+--INSERT INTO `code_credit` (`numeric_value`, `key_char`, `used`, `value`) VALUES
+(1, 'AAA', 1, '15000');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `composant`
 --
 
@@ -42,7 +99,7 @@ CREATE TABLE IF NOT EXISTS `composant` (
 -- Dumping data for table `composant`
 --
 
-INSERT INTO `composant` (`idComposant`, `nom`, `description`, `idUnite`, `image`) VALUES
+--INSERT INTO `composant` (`idComposant`, `nom`, `description`, `idUnite`, `image`) VALUES
 (1, 'Salade indienne', 'Composé de poivron vert, jaunes, et rouges 30%, eau, poulet rôti 11%(poulet origine: Madagascar), eau, fécule de manioc, sel, carottes 11%, riz 10%, farine de blé, vinaigre d''alcool, huile de colza, coriandre, curry 0.2%(curcuma, coriandre, piment, poivre, fenouil, fenugrec, cumin)', 1, 'mbola tsisy'),
 (2, 'Lasagnes Bolognaises', 'Eau, pulpe de tomate 13% (tomates, jus de tomates), viande bovine hachée précuite 12% (Origine France; équivalent viande crue 17%), pâte lasagne 9% (semoule de blé dur, eau, œufs), oignons, concentré de tomates, carottes 5%, lentilles corail précuites, amidon, crème, sel, basilic, arôme naturel de boeuf, arôme naturel d''ail, arôme naturel (contient lait), origan.', 1, 'mbola tsisy'),
 (3, 'Couscous royal', 'Semoule de blé dur réhydraté 30% (semoule de blé dur, eau, huile de colza, sel), viande de poulet cru 23% (origine France), eau, merguez 5% (viande de bœuf 4,4% (origine France), gras de bœuf, (origine France), épices et plantes aromatiques, sel, sirop de glucose, dextrose, arômes naturels), poivrons rouges et verts 5%, carottes 3%, tomates concassées 3% (tomates, jus de tomate), concentré de tomates 3%, courgettes 2%, oignons 2%, pois chiches 2%, navets 2%, huile de colza, sel, ail, amidon de pomme de terre, sucre, fécule de manioc, mélange d''épices ras el hanout, fibre de psyllium, poivre blanc, épices, poudre de tomates, arômes naturels, sel.', 1, 'mbola tsisy\r\n'),
@@ -50,6 +107,45 @@ INSERT INTO `composant` (`idComposant`, `nom`, `description`, `idUnite`, `image`
 (5, 'Tajine de légumes aux céréales', 'Eau, semoule complète de blé dur préparée 17% (eau, semoule complète de blé dur, huile de colza, sel), carottes, pois chiches réhydratés 9,5%, haricots verts 9%, petits pois 4,8%, lentilles noires beluga réhydratées, sarrasin réhydraté, concentré de tomates 1,9%, huile d''olive vierge extra, raisins secs (contient huile de colza et/ou huile de coton), protéines de soja texturées, sel, épices, amidon, arômes naturels (contient lait), gingembre.', 1, 'mbola tsisy'),
 (6, 'Pompe', 'Se mettre en position de pompe et pousser continuellement. A faire le matin après le réveil et suivre d''un repas bien équilibrer', 5, 'mbola tsisy'),
 (7, 'Jogging', 'Trotiner lentement sur un itinéraire bien fixé. Faire attention à ne pas courrir trop vite car cela entraine l''épuisement rapidement', 3, 'mbola tsisy');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `credit`
+--
+
+CREATE TABLE IF NOT EXISTS `credit` (
+  `idAccount` int(11) DEFAULT NULL,
+  `montant` decimal(10,0) NOT NULL,
+  `code` varchar(15) NOT NULL,
+  KEY `account_credit_fk` (`idAccount`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `credit`
+--
+
+--INSERT INTO `credit` (`idAccount`, `montant`, `code`) VALUES
+(1, '15000', 'AAA0000001');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `credit_attente`
+--
+
+CREATE TABLE IF NOT EXISTS `credit_attente` (
+  `idAccount` int(11) DEFAULT NULL,
+  `code` varchar(10) DEFAULT NULL,
+  UNIQUE KEY `idAccount` (`idAccount`,`code`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `credit_attente`
+--
+
+--INSERT INTO `credit_attente` (`idAccount`, `code`) VALUES
+(1, 'AAA0000001');
 
 -- --------------------------------------------------------
 
@@ -69,7 +165,7 @@ CREATE TABLE IF NOT EXISTS `detail_regime` (
 -- Dumping data for table `detail_regime`
 --
 
-INSERT INTO `detail_regime` (`idRegime`, `idComposant`, `quantite`) VALUES
+--INSERT INTO `detail_regime` (`idRegime`, `idComposant`, `quantite`) VALUES
 (1, 2, '200.00'),
 (1, 4, '50.00'),
 (1, 7, '15.00');
@@ -91,6 +187,22 @@ CREATE TABLE IF NOT EXISTS `detail_user` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `key_char`
+--
+
+CREATE TABLE IF NOT EXISTS `key_char` (
+  `key_value` varchar(3) DEFAULT 'AAA'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `key_char`
+--
+  INSERT INTO `key_char` (`key_value`) VALUES
+  ('AAA');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `regime`
 --
 
@@ -99,7 +211,7 @@ CREATE TABLE IF NOT EXISTS `regime` (
   `coefficient` float NOT NULL,
   `prix` decimal(10,2) NOT NULL,
   PRIMARY KEY (`idRegime`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `regime`
@@ -107,7 +219,31 @@ CREATE TABLE IF NOT EXISTS `regime` (
 
 INSERT INTO `regime` (`idRegime`, `coefficient`, `prix`) VALUES
 (1, 0.5, '4950.00'),
-(2, -0.5, '5950.00');
+(2, -0.5, '5950.00'),
+(3, 0.8, '6450.00'),
+(4, -1, '8950.00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transaction`
+--
+
+CREATE TABLE IF NOT EXISTS `transaction` (
+  `idAccount` int(11) DEFAULT NULL,
+  `mouvement` tinyint(2) NOT NULL,
+  `montant` decimal(10,0) NOT NULL,
+  `dateTransac` date DEFAULT NULL,
+  KEY `account_transac_fk` (`idAccount`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `transaction`
+--
+
+--INSERT INTO `transaction` (`idAccount`, `mouvement`, `montant`, `dateTransac`) VALUES
+(1, 1, '30000', '2023-07-10'),
+(1, 0, '15000', '2023-07-11');
 
 -- --------------------------------------------------------
 
@@ -152,7 +288,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`idUser`, `nom`, `email`, `password`, `isAdmin`, `img`) VALUES
+--INSERT INTO `user` (`idUser`, `nom`, `email`, `password`, `isAdmin`, `img`) VALUES
 (1, 'Tony Fitahiana', 'fitahianatony77@gmail.com', '12345', 1, 'mbola tsisy');
 
 --
@@ -160,10 +296,23 @@ INSERT INTO `user` (`idUser`, `nom`, `email`, `password`, `isAdmin`, `img`) VALU
 --
 
 --
+-- Constraints for table `achat`
+--
+ALTER TABLE `achat`
+  ADD CONSTRAINT `user_achat_fk` FOREIGN KEY (`idUser`) REFERENCES `user` (`idUser`),
+  ADD CONSTRAINT `regime_achat_fk` FOREIGN KEY (`idRegime`) REFERENCES `regime` (`idRegime`);
+
+--
 -- Constraints for table `composant`
 --
 ALTER TABLE `composant`
   ADD CONSTRAINT `idUnite` FOREIGN KEY (`idUnite`) REFERENCES `unite` (`idUnite`);
+
+--
+-- Constraints for table `credit_attente`
+--
+ALTER TABLE `credit_attente`
+  ADD CONSTRAINT `credit_demande_fk` FOREIGN KEY (`idAccount`) REFERENCES `account` (`idAccount`);
 
 --
 -- Constraints for table `detail_regime`
@@ -178,10 +327,11 @@ ALTER TABLE `detail_regime`
 ALTER TABLE `detail_user`
   ADD CONSTRAINT `detail_user_idfk` FOREIGN KEY (`idUser`) REFERENCES `user` (`idUser`);
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
+--
+-- Constraints for table `transaction`
+--
+ALTER TABLE `transaction`
+  ADD CONSTRAINT `account_transac_fk` FOREIGN KEY (`idAccount`) REFERENCES `account` (`idAccount`);
 
 CREATE TABLE IF NOT EXISTS `plat` (
   `idPlat` int(11) NOT NULL AUTO_INCREMENT,
@@ -192,7 +342,7 @@ CREATE TABLE IF NOT EXISTS `plat` (
   PRIMARY KEY (`idPlat`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
-insert into plat values(null,'Compote Pomme','Purée de pomme 95,74%, sucre, antioxydant : acide ascorbique.','Energie (kJ) 	288 	288
+--insert into plat values(null,'Compote Pomme','Purée de pomme 95,74%, sucre, antioxydant : acide ascorbique.','Energie (kJ) 	288 	288
 Energie (kcal) 	68 	68
 Matières grasses (g) 	0.6 	0.6
 Dont acides gras saturés (g) 	0.2 	0.2
@@ -201,7 +351,7 @@ Dont sucres (g) 	14 	14
 Fibres (g) 	1.4 	1.4
 Protéines (g) 	0.5 	0.5
 Sel (g) 	0.01 	0.01','compotepomme.jpg');
-insert into plat values(null,'Entremets vanille ','Sucre, amidon de maïs, fibre de chicorée, gélifiant : pectine, arômes naturels de vanille, sel, extrait de carotte.','Energie (kJ) 	1540 	523
+--insert into plat values(null,'Entremets vanille ','Sucre, amidon de maïs, fibre de chicorée, gélifiant : pectine, arômes naturels de vanille, sel, extrait de carotte.','Energie (kJ) 	1540 	523
 Energie (kcal) 	368 	124
 Matières grasses (g) 	0.4 	0.2
 Dont acides gras saturés (g) 	0.1 	0.1
@@ -210,7 +360,7 @@ Dont sucres (g) 	55.6 	18.3
 Fibres (g) 	6.3 	1.3
 Protéines (g) 	0.3 	4.8
 Sel (g) 	0.6 	0.3','vanille.jpg');
-insert into plat values(null,'Petits pains aux céréales BIO ',"Farine de blé*, eau, graines* 10%, (tournesol*, lin brun*), levain* (farine de blé*, eau), son de blé*, sel marin non traité, levure*, farine de blé d'épeautre malté torréfié 100% des ingrédients d'origine agricole sont issus de l'Agriculture Biologique Contient: Gluten. Traces possibles : soja, œufs, fruits à coque, dérivés du lait, graines de sésame.",'Energie (kJ) 	1351 	513
+--insert into plat values(null,'Petits pains aux céréales BIO ',"Farine de blé*, eau, graines* 10%, (tournesol*, lin brun*), levain* (farine de blé*, eau), son de blé*, sel marin non traité, levure*, farine de blé d'épeautre malté torréfié 100% des ingrédients d'origine agricole sont issus de l'Agriculture Biologique Contient: Gluten. Traces possibles : soja, œufs, fruits à coque, dérivés du lait, graines de sésame.",'Energie (kJ) 	1351 	513
 Energie (kcal) 	321 	122
 Matières grasses (g) 	8.4 	3.2
 Dont acides gras saturés (g) 	1 	0.4
@@ -219,7 +369,7 @@ Dont sucres (g) 	1.3 	0.5
 Fibres (g) 	4.6 	1.7
 Protéines (g) 	10 	3.8
 Sel (g) 	1.1 	0.4','pain.jpg');
-insert into plat values(null,'
+--insert into plat values(null,'
 Purée de pomme de terre et ciboulette','Flocons de pomme de terre, poudre de lait écrémé, fécule de manioc, sel arômes naturels, épices et plantes aromatiques dont ciboulette (0,3%).
 Contient: Lait. Peut contenir des traces de blé','Energie (kJ) 	1445 	722.5
 Energie (kcal) 	346 	173
@@ -230,12 +380,10 @@ Dont sucres (g) 	8.9 	4.4
 Fibres (g) 	6.5 	3.3
 Protéines (g) 	11.8 	5.9
 Sel (g) 	2.3 	1.1','puree.jpg');
-insert into plat values(null,'Fraise','100% naturel','100% naturel','fraise.jpg');
-insert into plat values(null,'Miel','100% naturel','100% naturel','miel.jpg');
-insert into plat values(null,'Ananas','Bon pour la perte de poids','100% naturel','ananas.jpg');
+--insert into plat values(null,'Fraise','100% naturel','100% naturel','fraise.jpg');
+--insert into plat values(null,'Miel','100% naturel','100% naturel','miel.jpg');
+--insert into plat values(null,'Ananas','Bon pour la perte de poids','100% naturel','ananas.jpg');
 
-create table niveau(
-  idNiveau int auto_increment PRIMARY key,
-  theme varchar(100),
-  description text
-);
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

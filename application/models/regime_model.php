@@ -4,6 +4,7 @@
         public function getDetail($idRegime, $duree){
             $sql = "SELECT c.nom, c.description, dr.quantite, u.value, '" . $duree . "' as duree,image, '" . $idRegime . "' as idRegime from detail_regime as dr JOIN composant as c ON dr.idcomposant=c.idcomposant JOIN unite as u ON c.idUnite=u.idUnite WHERE dr.idregime=%s";
             $sql = sprintf($sql, $idRegime);
+           
             $rows = $this->db->query($sql);
             return $rows->result_array();
         }
@@ -54,5 +55,27 @@
             $result = $this->db->query($sql);
             return $result->result_array();
         }
+        public function getPrix($idRegime){
+            $sql = "SELECT prix FROM regime WHERE idRegime=" . $idRegime;
+            $result = $this->db->query($sql);
+            $ans = $result->result_array();
+            return $ans[0]['prix'];
+        }
+
+        public function WeightForIMC($height, $weight){
+            $imc = $weight / pow($height/100, 2);
+            if ($imc > 25) {
+                return (25 * pow($height/100, 2)) - $weight;
+            }
+            else if ($imc < 19) {
+                return (19 * pow($height/100, 2)) - $weight;
+            }
+            else return;
+        }
+
+        public function getImc($height, $weight){
+            return $weight / pow($height/100, 2);
+        }
+
     }
 ?>

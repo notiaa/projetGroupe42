@@ -13,7 +13,7 @@
 </head>
 <body>
     <main>
-    <form method="GET" action="<?php echo base_url('Menu/sport')?>">
+    <form method="GET" action="<?php echo base_url('Menu/sport')?>" enctype="multipart/form-data">
     
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label">Nom Sport</label>
@@ -36,7 +36,7 @@
     <div class="row mb-3">
         <label class="col-sm-3 col-form-label">Photo Sport</label>
         <div class="col-sm-6">
-            <input type="file" class="form-control" name="photo" value="" required/>
+            <input type="file" class="form-control" name="photo" required/>
         </div>
     </div>
             <button type="submit" class="btn btn-primary">Envoyer</button>
