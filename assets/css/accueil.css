@@ -14,7 +14,7 @@
     box-sizing: border-box;
 }
 body{
-    background-color: #669980;
+    background-color: #1375a2;
 }
 .sidebar{
     height: 100%;
@@ -100,7 +100,7 @@ main{
     background: #f1f5f9;
     min-height: 90vh;
     padding: 1rem 3rem;
-    background-color: #669980;
+    background-color: #1375a2;
 }
 .dash-title{
     color: #fff;
